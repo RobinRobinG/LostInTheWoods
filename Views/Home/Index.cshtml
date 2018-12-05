@@ -1,0 +1,71 @@
+@model Trail
+@{
+    ViewData["Home"] = "Home Page";
+}
+
+<h1>Lost in the Woods</h1>
+
+<h2>Add Trail</h2>
+<form asp-action="NewTrail" asp-controller="Home" method="POST">
+    <label asp-for="Name"></label>
+    <input asp-for="Name">
+
+    <label asp-for="Description"></label>
+    <input asp-for="Description">
+
+    <label asp-for="Length"></label>
+    <input asp-for="Length">
+
+    <label asp-for="Elevation"></label>
+    <input asp-for="Elevation">
+
+    <label asp-for="Latitude"></label>
+    <input asp-for="Latitude">
+
+    <label asp-for="Longitude"></label>
+    <input asp-for="Longitude">
+    <button>Submit</button>
+</form>
+
+<h2>All Trails</h2>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Length</th>
+        <th>Elevation</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Actions</th>
+    </tr>
+    @{
+        foreach (Trail trail in @ViewBag.alltrails)
+        {
+            <tr>
+                <td>@trail.Name</td>
+                <td>@trail.Description</td>
+                <td>@trail.Length</td>
+                <td>@trail.Elevation</td>
+                <td>@trail.Latitude</td>
+                <td>@trail.Longitude</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        }
+    }
+</table> 
+
+
+
+
+
+
+
+
+
+
+
+  }
+}
